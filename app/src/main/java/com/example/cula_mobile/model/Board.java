@@ -2,7 +2,7 @@ package com.example.cula_mobile.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Card {
+public class Board {
     @SerializedName("id")
     private int idCard;
     @SerializedName("id_project")
