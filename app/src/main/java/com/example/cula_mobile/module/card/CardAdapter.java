@@ -37,13 +37,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         TaskAdapter taskAdapter = new TaskAdapter(cards.get(posititon).getListTask(), context);
         holder.txtCardName.setText(cards.get(posititon).getCardName());
         holder.listTask.setAdapter(taskAdapter);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     public int getItemCount() {
