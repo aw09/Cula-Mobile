@@ -22,12 +22,12 @@
             android:background="#F1F1F1" >
 
             <TextView
-                android:id="@+id/txtBoardName"
+                android:id="@+id/txtCardName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="BOARD NAME"
+                android:text="CARD NAME"
                 android:textColor="#4B4B4B"
                 android:textSize="50px"
                 android:textStyle="bold"
@@ -47,7 +47,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/listTask"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtBoardName" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCardName" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listTask"
