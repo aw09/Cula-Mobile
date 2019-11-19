@@ -7,6 +7,8 @@ public class Task {
     private int idTask;
     @SerializedName("id_role")
     private int idRole;
+    @SerializedName("id_card")
+    private int idCard;
     @SerializedName("id_label")
     private int idLabel;
     @SerializedName("id_grouping")
