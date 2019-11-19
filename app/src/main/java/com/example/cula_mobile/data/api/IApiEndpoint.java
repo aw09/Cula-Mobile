@@ -1,6 +1,7 @@
 package com.example.cula_mobile.data.api;
 
 import com.example.cula_mobile.model.Board;
+import com.example.cula_mobile.model.Card;
 import com.example.cula_mobile.model.Project;
 import com.example.cula_mobile.model.Task;
 import com.example.cula_mobile.model.response.ResponseLogin;
@@ -37,8 +38,9 @@ public interface IApiEndpoint {
             @Path("id") int id
     );
 
-    @GET("myBoard")
-    Call<Board> myBoard(
-            @Header("Authorization") String header
+    @GET("board/{id")
+    Call<Card> showBoard(
+            @Header("Authorization") String header,
+            @Path("id") int id
     );
 }
