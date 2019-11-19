@@ -36,7 +36,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, CardActivity.class);
-                intent.putExtra("idProject", myBoards.get(posititon).getIdProject());
                 intent.putExtra("idBoard", myBoards.get(posititon).getIdBoard());
                 context.startActivity(intent);
             }
