@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MyCardFragment">
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listMyTask"
             android:layout_width="395dp"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="8dp"
