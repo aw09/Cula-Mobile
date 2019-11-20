@@ -17,7 +17,6 @@ import com.example.cula_mobile.module.mytask.MyTaskActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private String token;
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                         token = response.body().getToken();
+
                         // TODO: 19/11/2019 preference logic
 
                         Intent intent = new Intent(MainActivity.this, MyTaskActivity.class);
@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                        Log.e("onFailure: ", "Errorrrr");
+                        Log.e("lelegagal", call.request().toString());
+                        Log.e("onFailure: ", t.getMessage());
+
                     }
                 });
             }
