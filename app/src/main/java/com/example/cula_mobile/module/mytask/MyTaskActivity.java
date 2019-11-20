@@ -25,7 +25,7 @@ public class MyTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mytask);
+        setContentView(R.layout.fragment_my_card);
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
         Call<Task> callTask = endpoint.myTask("Blablabla");
         callTask.enqueue(new Callback<Task>() {
