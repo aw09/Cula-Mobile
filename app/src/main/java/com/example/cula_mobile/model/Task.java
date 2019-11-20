@@ -44,6 +44,14 @@ public class Task {
         this.idRole = idRole;
     }
 
+    public int getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
+    }
+
     public int getIdLabel() {
         return idLabel;
     }
