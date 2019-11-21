@@ -18,7 +18,6 @@ public class LoginPresenter {
     private static final String BEARER_TOKEN_PREFIX = "Bearer ";
     private ILoginView view;
     private String token;
-    private SharedPreferenceUtils sharedPreferenceUtils;
 
     public LoginPresenter(ILoginView view) {
         this.view = view;
@@ -31,8 +30,9 @@ public class LoginPresenter {
         apiEndpoint.login(email, password).enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                token = response.body().getToken();
-                SharedPreferenceUtils.setStringSharedPreferences("token", token);
+                token = BEARER_TOKEN_PREFIX + response.body().getToken();
+                view.moveToMyTask();
+                //SharedPreferenceUtils.setStringSharedPreferences("token", token);
                 // TODO: 19/11/2019 preference logic
 
             }
