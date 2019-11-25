@@ -25,7 +25,7 @@ public class ProjectActivity extends AppCompatActivity {
     protected void OnCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_projects);
-        IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
+        /*IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
         Call<Project> callProject = endpoint.myProject("Test");
         callProject.enqueue(new Callback<Project>() {
             @Override
@@ -42,6 +42,6 @@ public class ProjectActivity extends AppCompatActivity {
 
             }
         });
-
+*/
     }
 }

@@ -1,19 +1,17 @@
 package com.example.cula_mobile.module.project;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.cula_mobile.ActivityBottom_navigation;
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.model.Project;
-import com.example.cula_mobile.module.board.BoardActivity;
-import com.example.cula_mobile.module.mytask.MyTaskAdapter;
+import com.example.cula_mobile.module.board.BoardFragment;
 
 import java.util.ArrayList;
 
@@ -39,11 +37,12 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, BoardActivity.class);
-                intent.putExtra("idProject", projects.get(position).getIdProject());
-                context.startActivity(intent);
+                fragmentTransaction(new BoardFragment(projects.get(position).getIdProject()));
+//                intent.putExtra("idProject", projects.get(position).getIdProject());
+//                context.startActivity(intent);
             }
         });
+
     }
 
     public int getItemCount() {
@@ -51,13 +50,22 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
     }
 
     public class ProjectViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtProjectName, txtBoard;
+        private TextView txtProjectName;
 
         public ProjectViewHolder(View itemView) {
             super(itemView);
 
             txtProjectName = (TextView) itemView.findViewById(R.id.textView);
-            txtBoard = (TextView) itemView.findViewById(R.id.txtBoard);
         }
+    }
+
+    private boolean fragmentTransaction(Fragment fragment){
+        FragmentManager fragmentManager = ((ActivityBottom_navigation) context).getSupportFragmentManager();
+        String backStackStateName = null;
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_layout_container, fragment, "")
+                .commit();
+        return true;
     }
 }
