@@ -17,33 +17,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BoardActivity extends AppCompatActivity {
-    private int idProject;
+public class BoardActivity extends AppCompatActivity implements IBoardView {
+    private BoardPresenter boardPresenter;
     private RecyclerView recyclerView;
     private BoardAdapter boardAdapter;
-    private ArrayList<Board> boards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
-        idProject = getIntent().getIntExtra("idProject", 0);
-        IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<Board> callBoard = endpoint.showProject("Test", idProject);
-        callBoard.enqueue(new Callback<Board>() {
-            @Override
-            public void onResponse(Call<Board> call, Response<Board> response) {
-                recyclerView = (RecyclerView) findViewById(R.id.listBoard);
-                boardAdapter = new BoardAdapter(boards, BoardActivity.this);
+        int idProject = getIntent().getIntExtra("idProject", 0);
+        boardPresenter = new BoardPresenter(this);
+        boardPresenter.getBoardList(idProject);
+    }
 
-                recyclerView.setAdapter(boardAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(BoardActivity.this));
-            }
+    @Override
+    public void showBoardList(ArrayList<Board> boards) {
+        recyclerView = (RecyclerView) findViewById(R.id.listBoard);
+        boardAdapter = new BoardAdapter(boards, BoardActivity.this);
 
-            @Override
-            public void onFailure(Call<Board> call, Throwable t) {
-
-            }
-        });
+        recyclerView.setAdapter(boardAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(BoardActivity.this));
     }
 }

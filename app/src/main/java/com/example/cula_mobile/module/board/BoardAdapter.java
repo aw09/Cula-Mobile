@@ -1,15 +1,17 @@
 package com.example.cula_mobile.module.board;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.cula_mobile.ActivityBottom_navigation;
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.model.Board;
-import com.example.cula_mobile.module.card.CardActivity;
+import com.example.cula_mobile.module.card.CardFragment;
 
 import java.util.ArrayList;
 
@@ -35,9 +37,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, CardActivity.class);
-                intent.putExtra("idBoard", myBoards.get(posititon).getIdBoard());
-                context.startActivity(intent);
+                fragmentTransaction(new CardFragment(myBoards.get(posititon).getIdBoard()));
             }
         });
     }
@@ -56,5 +56,15 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
             txtBoardName = (TextView) itemView.findViewById(R.id.txtCardName);
             listTask = (RecyclerView) itemView.findViewById(R.id.listTask);
         }
+    }
+
+    private boolean fragmentTransaction(Fragment fragment){
+        FragmentManager fragmentManager = ((ActivityBottom_navigation) context).getSupportFragmentManager();
+        String backStackStateName = null;
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_layout_container, fragment, "")
+                .commit();
+        return true;
     }
 }
