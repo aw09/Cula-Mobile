@@ -13,6 +13,7 @@ import com.example.cula_mobile.ActivityBottom_navigation;
 import com.example.cula_mobile.MainActivity;
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.module.mytask.MyTaskActivity;
+import com.example.cula_mobile.utils.SharedPreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
             @Override
             public void onClick(View view) {
                 loginPresenter.doLogin(email.getText().toString(), password.getText().toString());
+                SharedPreferenceUtils.initSharedPrefrences("CULA", LoginActivity.this);
+
             }
         });
     }
