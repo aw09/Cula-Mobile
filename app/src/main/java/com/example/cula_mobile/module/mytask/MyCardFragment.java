@@ -23,7 +23,6 @@ public class MyCardFragment extends Fragment implements IMyTaskView {
     MyTaskPresenter myTaskPresenter;
     private RecyclerView recyclerView;
     private MyTaskAdapter myTaskAdapter;
-    private ArrayList<Task> tasks;
     private View view;
 
     public MyCardFragment() {
@@ -43,7 +42,7 @@ public class MyCardFragment extends Fragment implements IMyTaskView {
         return view;
     }
 
-    public void showMyCardList() {
+    public void showMyCardList(ArrayList<Task> tasks) {
         recyclerView = (RecyclerView) view.findViewById(R.id.listMyTask);
         myTaskAdapter = new MyTaskAdapter(tasks, getContext());
 

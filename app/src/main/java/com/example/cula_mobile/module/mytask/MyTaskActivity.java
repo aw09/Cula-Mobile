@@ -26,23 +26,23 @@ public class MyTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_card);
-        IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<Task> callTask = endpoint.myTask("Blablabla");
-        callTask.enqueue(new Callback<Task>() {
-            @Override
-            public void onResponse(Call<Task> call, Response<Task> response) {
-                recyclerView = (RecyclerView) findViewById(R.id.listMyTask);
-                myTaskAdapter = new MyTaskAdapter(tasks, MyTaskActivity.this);
-
-                recyclerView.setAdapter(myTaskAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(MyTaskActivity.this));
-            }
-
-            @Override
-            public void onFailure(Call<Task> call, Throwable t) {
-
-            }
-        });
+//        IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
+//        Call<Task> callTask = endpoint.myTask("Blablabla");
+//        callTask.enqueue(new Callback<Task>() {
+//            @Override
+//            public void onResponse(Call<Task> call, Response<Task> response) {
+//                recyclerView = (RecyclerView) findViewById(R.id.listMyTask);
+//                myTaskAdapter = new MyTaskAdapter(tasks, MyTaskActivity.this);
+//
+//                recyclerView.setAdapter(myTaskAdapter);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(MyTaskActivity.this));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Task> call, Throwable t) {
+//
+//            }
+//        });
 
     }
 }
