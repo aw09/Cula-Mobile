@@ -19,9 +19,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".module.project.ProjectActivity"
-            android:theme="@style/AppTheme"
-            android:label="Projects">
+            android:name=".ActivityBottom_navigation"
+            android:theme="@style/AppTheme">
 
         </activity>
         </application>
