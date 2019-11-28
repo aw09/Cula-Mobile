@@ -1,4 +1,4 @@
-package com.example.cula_mobile.module.board;
+package com.example.cula_mobile.module.detail_task;
 
 import android.content.Context;
 import android.view.LayoutInflater;
