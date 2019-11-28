@@ -4,6 +4,8 @@ import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
 import com.example.cula_mobile.model.Project;
 import com.example.cula_mobile.model.Task;
+import com.example.cula_mobile.model.User;
+import com.example.cula_mobile.model.response.ResponseCreateTask;
 import com.example.cula_mobile.model.response.ResponseLogin;
 
 import java.util.ArrayList;
@@ -40,9 +42,24 @@ public interface IApiEndpoint {
             @Path("id") int id
     );
 
-    @GET("board/{id")
+    @GET("board/{id}")
     Call<ArrayList<Card>> showBoard(
             @Header("Authorization") String header,
             @Path("id") int id
+    );
+
+    @GET("get-user")
+    Call<User> getUser(
+          @Header("Authorization") String header
+    );
+
+    @FormUrlEncoded
+    @POST("task")
+    Call<ResponseCreateTask> createTask(
+            @Header("Authorization") String header,
+            @Field("id_card") int idCard,
+            @Field("task") String taskName,
+            @Field("description_of_task") String description,
+            @Field("due_date") String dueDate
     );
 }
