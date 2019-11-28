@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.cula_mobile.module.mytask.MyCardFragment;
+import com.example.cula_mobile.module.profile.AccountFragment;
 import com.example.cula_mobile.module.project.ProjectsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
