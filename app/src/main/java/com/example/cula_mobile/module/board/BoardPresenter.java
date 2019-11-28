@@ -21,6 +21,7 @@ public class BoardPresenter {
     }
 
     public void getBoardList(int idProject) {
+        Log.e("lele", idProject+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
         Call<ArrayList<Board>> callBoard = endpoint.showProject(SharedPreferenceUtils
                                 .getStringSharedPreferences("token", "wew"),
@@ -28,6 +29,7 @@ public class BoardPresenter {
         callBoard.enqueue(new Callback<ArrayList<Board>>() {
             @Override
             public void onResponse(Call<ArrayList<Board>> call, Response<ArrayList<Board>> response) {
+                Log.e("lele", "hore");
                 view.showBoardList(response.body());
             }
 
