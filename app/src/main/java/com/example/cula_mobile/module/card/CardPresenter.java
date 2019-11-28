@@ -30,7 +30,7 @@ public class CardPresenter {
 
             @Override
             public void onFailure(Call<ArrayList<Card>> call, Throwable t) {
-
+                Log.e("lele", t.getMessage());
             }
         });
     }
