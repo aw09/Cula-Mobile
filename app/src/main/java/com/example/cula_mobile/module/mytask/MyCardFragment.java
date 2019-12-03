@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.model.Task;
+import com.example.cula_mobile.model.response.ResponseMyTask;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class MyCardFragment extends Fragment implements IMyTaskView {
         return view;
     }
 
-    public void showMyCardList(ArrayList<Task> tasks) {
+    public void showMyCardList(ArrayList<ResponseMyTask> tasks) {
         recyclerView = (RecyclerView) view.findViewById(R.id.listMyTask);
         myTaskAdapter = new MyTaskAdapter(tasks, getContext());
 
