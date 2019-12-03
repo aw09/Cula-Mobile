@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".module.mytask.MyCardFragment">
-        <androidx.recyclerview.widget.RecyclerView
+
+    <TextView
+        android:id="@+id/info_my_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:textSize="12dp"
+        android:layout_gravity="center_vertical"/>
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listMyTask"
             android:layout_width="395dp"
             android:layout_height="match_parent"

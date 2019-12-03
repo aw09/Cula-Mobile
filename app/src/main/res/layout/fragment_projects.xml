@@ -15,6 +15,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="270dp"
         android:text="Project"
+        android:fontFamily="serif"
         android:textColor="#4B4B4B"
         android:textSize="25dp"
         android:textStyle="bold"

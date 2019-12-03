@@ -7,7 +7,18 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
-    <HorizontalScrollView
+    <TextView
+        android:id="@+id/boardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Board Name"
+        android:textStyle="bold"
+        android:textColor="#4b4b4b"
+        android:textSize="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,17 +31,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/item_card"
-            android:scrollbars="horizontal"/>
+            tools:listitem="@layout/item_card"/>
 
-    </HorizontalScrollView>
+    </ScrollView>
 
 
 
