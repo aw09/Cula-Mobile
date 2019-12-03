@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
 import com.example.cula_mobile.model.Card;
+import com.example.cula_mobile.model.response.ResponseBoard;
+import com.example.cula_mobile.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 
@@ -20,17 +22,27 @@ public class CardPresenter {
     }
 
     public void getCardList(int idBoard) {
+        Log.e("bandeng", idBoard+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<ArrayList<Card>> callCard = endpoint.showBoard("token", idBoard);
-        callCard.enqueue(new Callback<ArrayList<Card>>() {
+        Call<ResponseBoard> callCard = endpoint.showBoard(SharedPreferenceUtils
+                        .getStringSharedPreferences("token", "card"), idBoard);
+
+        callCard.enqueue(new Callback<ResponseBoard>() {
             @Override
-            public void onResponse(Call<ArrayList<Card>> call, Response<ArrayList<Card>> response) {
-                view.showCardList(response.body());
+            public void onResponse(Call<ResponseBoard> call, Response<ResponseBoard> response) {
+                Log.e("edyrib", response.body()+"");
+                if (response.isSuccessful()) {
+                    view.showCardList(response.body().getListCard());
+                    view.showTitle(response.body().getBoardName());
+
+                } else {
+                    Log.e("bandeng", response.code()+"");
+                }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Card>> call, Throwable t) {
-                Log.e("lele", t.getMessage());
+            public void onFailure(Call<ResponseBoard> call, Throwable t) {
+                Log.e("bandengbau", t.toString());
             }
         });
     }

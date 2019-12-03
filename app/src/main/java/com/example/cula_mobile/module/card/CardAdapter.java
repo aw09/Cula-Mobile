@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cula_mobile.ActivityBottom_navigation;
@@ -41,6 +42,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         TaskAdapter taskAdapter = new TaskAdapter(cards.get(position).getListTask(), context);
         holder.txtCardName.setText(cards.get(position).getCardName());
         holder.listTask.setAdapter(taskAdapter);
+        holder.listTask.setLayoutManager(new LinearLayoutManager(context,
+                                            LinearLayoutManager.VERTICAL, false));
         holder.buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

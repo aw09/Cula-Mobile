@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.cula_mobile.R;
+import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
 
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class CardFragment extends Fragment implements ICardView {
     private CardAdapter cardAdapter;
     private View view;
     private int idBoard;
+    private TextView boardTitle;
 
     public CardFragment(int idBoard) {
         // Required empty public constructor
@@ -39,6 +43,7 @@ public class CardFragment extends Fragment implements ICardView {
         view = inflater.inflate(R.layout.fragment_card, container, false);
         cardPresenter = new CardPresenter(this);
         cardPresenter.getCardList(idBoard);
+
         return view;
     }
 
@@ -46,9 +51,15 @@ public class CardFragment extends Fragment implements ICardView {
     public void showCardList(ArrayList<Card> cards) {
         recyclerView = (RecyclerView) view.findViewById(R.id.listCard);
         cardAdapter = new CardAdapter(cards, getContext());
-
+        Log.e("bandeng", cards.size()+"");
         recyclerView.setAdapter(cardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    @Override
+    public void showTitle(String boardName) {
+        boardTitle = (TextView) view.findViewById(R.id.boardTitle);
+        boardTitle.setText(boardName);
     }
 }
