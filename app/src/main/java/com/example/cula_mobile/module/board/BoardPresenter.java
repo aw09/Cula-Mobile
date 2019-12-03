@@ -15,6 +15,7 @@ import retrofit2.Response;
 
 public class BoardPresenter {
     IBoardView view;
+    private String token;
 
     public BoardPresenter(IBoardView view) {
         this.view = view;
@@ -23,19 +24,23 @@ public class BoardPresenter {
     public void getBoardList(int idProject) {
         Log.e("lele", idProject+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<ArrayList<Board>> callBoard = endpoint.showProject(SharedPreferenceUtils
-                                .getStringSharedPreferences("token", "wew"),
-                                idProject);
+        token = SharedPreferenceUtils.getStringSharedPreferences("token", "board");
+        Call<ArrayList<Board>> callBoard = endpoint.showProject(token, idProject);
         callBoard.enqueue(new Callback<ArrayList<Board>>() {
             @Override
             public void onResponse(Call<ArrayList<Board>> call, Response<ArrayList<Board>> response) {
-                Log.e("lele", "hore");
-                view.showBoardList(response.body());
+                if (response.isSuccessful()) {
+                    Log.e("lele", response.code()+"");
+                    view.showBoardList(response.body());
+                } else {
+                    Log.e("lele", "not success");
+                }
+
             }
 
             @Override
             public void onFailure(Call<ArrayList<Board>> call, Throwable t) {
-                Log.e("lele", t.getMessage());
+                Log.e("fail", t.getMessage());
             }
         });
     }

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.model.Board;
@@ -25,6 +26,7 @@ public class BoardFragment extends Fragment implements IBoardView{
     private BoardAdapter boardAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Board> boards;
+    private TextView textView;
     private View view;
     private int idProject;
 
@@ -41,6 +43,7 @@ public class BoardFragment extends Fragment implements IBoardView{
         view = inflater.inflate(R.layout.fragment_board, container, false);
         boardPresenter = new BoardPresenter(this);
         boardPresenter.getBoardList(idProject);
+        textView = view.findViewById(R.id.txtTitleBoard);
         return view;
     }
 
@@ -48,7 +51,7 @@ public class BoardFragment extends Fragment implements IBoardView{
     public void showBoardList(ArrayList<Board> boards) {
         recyclerView = (RecyclerView) view.findViewById(R.id.listBoard);
         boardAdapter = new BoardAdapter(boards, getContext());
-        Log.e("lele", boardAdapter.getItemCount()+"");
+        Log.e("lele", boards.size()+"");
         recyclerView.setAdapter(boardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

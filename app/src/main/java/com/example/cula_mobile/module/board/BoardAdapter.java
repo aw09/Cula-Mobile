@@ -1,6 +1,7 @@
 package com.example.cula_mobile.module.board;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     }
 
     public void onBindViewHolder(BoardViewHolder holder, int posititon) {
+        Log.e("mujaeer", posititon+"");
+        Log.e("mujaeer", myBoards.get(posititon).getBoardName()+"");
         holder.txtBoardName.setText(myBoards.get(posititon).getBoardName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +56,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         public BoardViewHolder(View itemView) {
             super(itemView);
 
-            txtBoardName = (TextView) itemView.findViewById(R.id.txtCardName);
-            listTask = (RecyclerView) itemView.findViewById(R.id.listTask);
+            txtBoardName = (TextView) itemView.findViewById(R.id.textView);
+            Log.e("mujaeerbawah", txtBoardName+"");
         }
     }
 
