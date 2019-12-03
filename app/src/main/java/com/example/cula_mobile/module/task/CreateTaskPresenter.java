@@ -21,12 +21,13 @@ public class CreateTaskPresenter {
     }
 
     public void createTask(int idCard, String taskName, String description, String dueDate) {
+        Log.e("oppa", idCard + "");
         String token = SharedPreferenceUtils.getStringSharedPreferences("token", 0+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
         endpoint.createTask(token, idCard, taskName, description, dueDate).enqueue(new Callback<ResponseCreateTask>() {
             @Override
             public void onResponse(Call<ResponseCreateTask> call, Response<ResponseCreateTask> response) {
-                task.setIdCard(response.body().getIdCard());
+                task.setIdCard(idCard);
                 task.setTaskName(response.body().getTaskName());
                 task.setDetailTask(response.body().getDetailTask());
                 task.setDue_date(response.body().getDue_date());
