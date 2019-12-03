@@ -11,7 +11,7 @@ public class Card {
     @SerializedName("id_board")
     private int idBoard;
     @SerializedName("name")
-    private int cardName;
+    private String cardName;
     @SerializedName("created_at")
     private String created_at;
     @SerializedName("updated_at")
@@ -43,11 +43,11 @@ public class Card {
         this.idBoard = idBoard;
     }
 
-    public int getCardName() {
+    public String getCardName() {
         return cardName;
     }
 
-    public void setCardName(int cardName) {
+    public void setCardName(String cardName) {
         this.cardName = cardName;
     }
 

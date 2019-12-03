@@ -1,20 +1,19 @@
-package com.example.cula_mobile.model;
+package com.example.cula_mobile.model.response;
 
+import com.example.cula_mobile.model.Card;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class Board {
+public class ResponseBoard {
     @SerializedName("id")
     private int idBoard;
     @SerializedName("id_project")
     private int idProject;
     @SerializedName("name")
     private String boardName;
-    @SerializedName("created_at")
-    private String createdDate;
-    @SerializedName("updated_at")
-    private String updatedDate;
+    @SerializedName("card")
+    private ArrayList<Card> listCard;
 
     public int getIdBoard() {
         return idBoard;
@@ -40,19 +39,11 @@ public class Board {
         this.boardName = boardName;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
+    public ArrayList<Card> getListCard() {
+        return listCard;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(String updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setListCard(ArrayList<Card> listCard) {
+        this.listCard = listCard;
     }
 }

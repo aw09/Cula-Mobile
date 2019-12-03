@@ -24,6 +24,9 @@ public class User {
     @SerializedName("picture")
     private String picture;
 
+    @SerializedName("user")
+    private User user;
+
     public int getIdUser() {
         return idUser;
     }
@@ -78,5 +81,9 @@ public class User {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public User getUser() {
+        return user;
     }
 }
