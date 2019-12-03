@@ -25,13 +25,16 @@ public class ProfilePresenter {
         callUser.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.e("profile", "");
-                view.showUserProfileData(response.body());
+                if(response.isSuccessful()) {
+                    view.showUserProfileData(response.body().getUser());
+                } else {
+                    Log.e("dugong", response.code() + "");
+                }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.e("profile", t.getMessage());
+                Log.e("dugong", t.getMessage());
             }
         });
 

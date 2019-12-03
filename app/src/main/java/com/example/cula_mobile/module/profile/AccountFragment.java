@@ -44,7 +44,6 @@ public class AccountFragment extends Fragment implements IProfileView {
 
     @Override
     public void showUserProfileData(User user) {
-        Log.e("lele", user.getUserName());
         name.setText(user.getUserName());
         email.setText(user.getEmailUser());
     }
