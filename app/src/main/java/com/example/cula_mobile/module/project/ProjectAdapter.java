@@ -64,7 +64,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
         String backStackStateName = null;
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.frame_layout_container, fragment, "")
+                .replace(R.id.frame_layout_container, fragment, "").addToBackStack(null)
                 .commit();
         return true;
     }
