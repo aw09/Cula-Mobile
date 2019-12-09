@@ -70,6 +70,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TasksViewHolde
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_layout_container, fragment, "")
+                .addToBackStack(null)
                 .commit();
         return true;
     }

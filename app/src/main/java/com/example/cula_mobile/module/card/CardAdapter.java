@@ -77,6 +77,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_layout_container, fragment, "")
+                .addToBackStack(null)
                 .commit();
         return true;
     }

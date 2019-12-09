@@ -6,4 +6,5 @@ import java.util.ArrayList;
 public interface ICardView {
     void showCardList(ArrayList<Card> cards);
     void showTitle(String boardName);
+    void showInformation();
 }

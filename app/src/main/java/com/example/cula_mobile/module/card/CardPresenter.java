@@ -32,8 +32,12 @@ public class CardPresenter {
             public void onResponse(Call<ResponseBoard> call, Response<ResponseBoard> response) {
                 Log.e("edyrib", response.body()+"");
                 if (response.isSuccessful()) {
-                    view.showCardList(response.body().getListCard());
-                    view.showTitle(response.body().getBoardName());
+                    if (response.body().getListCard().size() == 0) {
+                        view.showInformation();
+                    } else {
+                        view.showCardList(response.body().getListCard());
+                        view.showTitle(response.body().getBoardName());
+                    }
 
                 } else {
                     Log.e("bandeng", response.code()+"");
