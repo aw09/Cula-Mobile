@@ -6,14 +6,8 @@ public class ResponseMyTask {
     @SerializedName("id")
     private int idMyTask;
 
-    @SerializedName("id_role")
-    private int idRole;
-
     @SerializedName("id_card")
     private int idCard;
-
-    @SerializedName("id_label")
-    private int idLabel;
 
     @SerializedName("id_grouping")
     private int idGrouping;
@@ -38,6 +32,14 @@ public class ResponseMyTask {
 
     public void setIdCard(int idCard) {
         this.idCard = idCard;
+    }
+
+    public int getIdGrouping() {
+        return idGrouping;
+    }
+
+    public void setIdGrouping(int idGrouping) {
+        this.idGrouping = idGrouping;
     }
 
     public String getMyTaskName() {

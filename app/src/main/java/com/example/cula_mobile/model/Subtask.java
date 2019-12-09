@@ -6,7 +6,9 @@ public class Subtask {
 
     @SerializedName("id")
     private int idSubTask;
-    @SerializedName("subtask")
+    @SerializedName("id_task")
+    private int idTask;
+    @SerializedName("check_list")
     private String subTaskName;
     @SerializedName("due_date")
     private String dueDate;
@@ -33,5 +35,13 @@ public class Subtask {
 
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public int getIdTask() {
+        return idTask;
+    }
+
+    public void setIdTask(int idTask) {
+        this.idTask = idTask;
     }
 }
