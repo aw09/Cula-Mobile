@@ -14,7 +14,7 @@ import retrofit2.Response;
 
 public class CreateTaskPresenter {
     ICreateTaskView view;
-    ResponseCreateTask task;
+    ResponseCreateTask task = new ResponseCreateTask();
 
     public CreateTaskPresenter(ICreateTaskView view) {
         this.view = view;
