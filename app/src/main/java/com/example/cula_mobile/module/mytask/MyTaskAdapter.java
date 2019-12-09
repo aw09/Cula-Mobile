@@ -10,15 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cula_mobile.R;
-import com.example.cula_mobile.model.response.ResponseMyTask;
+import com.example.cula_mobile.model.Task;
 
 import java.util.ArrayList;
 
 public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.TaskViewHolder> {
-    private ArrayList<ResponseMyTask> task;
+    private ArrayList<Task> task;
     private Context context;
 
-    public MyTaskAdapter(ArrayList<ResponseMyTask> task, Context context) {
+    public MyTaskAdapter(ArrayList<Task> task, Context context) {
         this.task = task;
         this.context = context;
     }
@@ -32,7 +32,7 @@ public class MyTaskAdapter extends RecyclerView.Adapter<MyTaskAdapter.TaskViewHo
     }
 
     public void onBindViewHolder(TaskViewHolder holder, int position) {
-        holder.txtTaskName.setText(task.get(position).getMyTaskName());
+        holder.txtTaskName.setText(task.get(position).getTaskName());
         holder.txtDueDate.setText(task.get(position).getDueDate());
     }
 
