@@ -1,5 +1,7 @@
 package com.example.cula_mobile.module.login;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
 import com.example.cula_mobile.model.response.ResponseLogin;
@@ -24,16 +26,21 @@ public class LoginPresenter {;
         apiEndpoint.login(email, password).enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                token = "Bearer " + response.body().getToken();
-                view.moveToMyTask();
-                SharedPreferenceUtils.setStringSharedPreferences("token", token);
-                Log.e("tokenBerhasil", SharedPreferenceUtils.getStringSharedPreferences("token", token));
+                if (response.isSuccessful()) {
+                    token = "Bearer " + response.body().getToken();
+                    view.moveToMyTask();
+                    SharedPreferenceUtils.setStringSharedPreferences("token", token);
+                    Log.e("tokenBerhasil", SharedPreferenceUtils.getStringSharedPreferences("token", token));
+                } else {
+                    Log.e("lele", "not success");
+                    view.showInformation();
+                }
             }
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                Log.e("onFailure: ", t.getMessage());
-
+                Log.e("not response", t.toString());
+                view.showInformation();
             }
         });
     }
