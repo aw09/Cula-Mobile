@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_description"
@@ -40,6 +42,7 @@
                 android:text="Description of Task"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageDescription"
@@ -77,6 +80,7 @@
                 android:text="October 28th, 2019 at 9.00 PM"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageDueDate"
                 app:layout_constraintTop_toTopOf="parent"
@@ -152,6 +156,7 @@
                 android:text="Status"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/spinnerStatus"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageStatus"
@@ -159,7 +164,7 @@
 
             <Spinner
                 android:id="@+id/spinnerStatus"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -254,6 +259,7 @@
                 android:text="Members"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/listMember"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageMember"
@@ -306,13 +312,14 @@
                 android:text="Sub-task"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/listSubtask"
-                app:layout_constraintEnd_toStartOf="@id/btnAddTask"
-                app:layout_constraintStart_toEndOf="@+id/imageSubtask"
+                app:layout_constraintEnd_toStartOf="@id/btnAddSubtask"
+                app:layout_constraintStart_toEndOf="@id/imageSubtask"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/btnAddTask"
+                android:id="@+id/btnAddSubtask"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="32dp"
@@ -330,11 +337,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="32dp"
-                android:background="#F1F1F1"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddTask"
+                app:layout_constraintTop_toBottomOf="@id/btnAddSubtask"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_sub_task" />
 
@@ -372,6 +379,7 @@
                 android:text="Comments"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/addComment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageComment"
@@ -384,8 +392,9 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_task"
                 android:hint="Comment here"
+                android:fontFamily="sans-serif"
+                android:selectAllOnFocus="true"
                 app:layout_constraintBottom_toTopOf="@+id/btnAddComment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -414,7 +423,7 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
-                android:background="#F1F1F1"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
