@@ -3,10 +3,12 @@ package com.example.cula_mobile.data.api;
 import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
 import com.example.cula_mobile.model.Project;
+import com.example.cula_mobile.model.Subtask;
 import com.example.cula_mobile.model.Task;
 import com.example.cula_mobile.model.User;
 import com.example.cula_mobile.model.response.ResponseBoard;
 import com.example.cula_mobile.model.response.ResponseCreateTask;
+import com.example.cula_mobile.model.response.ResponseDetailTask;
 import com.example.cula_mobile.model.response.ResponseLogin;
 import com.example.cula_mobile.model.response.ResponseMyTask;
 
@@ -29,7 +31,7 @@ public interface IApiEndpoint {
     );
 
     @GET("myTask")
-    Call<ArrayList<ResponseMyTask>> myTask(
+    Call<ArrayList<Task>> myTask(
             @Header("Authorization") String header
     );
 
@@ -65,9 +67,18 @@ public interface IApiEndpoint {
             @Field("due_date") String dueDate
     );
 
-    @GET("show-task/{id}")
-    Call<Task> detailTask(
+    @GET("task/{id}")
+    Call<ResponseDetailTask> detailTask(
             @Header("Authorization") String header,
             @Path("id") int id
+    );
+
+    @FormUrlEncoded
+    @POST("checklist")
+    Call<Subtask> createSubtask(
+            @Header("Authorization") String header,
+            @Field("id_task") int idTask,
+            @Field("check_list") String subtaskName,
+            @Field("due_date") String dueDate
     );
 }
