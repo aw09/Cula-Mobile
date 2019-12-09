@@ -63,10 +63,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
     private boolean fragmentTransaction(Fragment fragment){
         FragmentManager fragmentManager = ((ActivityBottom_navigation) context).getSupportFragmentManager();
-        String backStackStateName = null;
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_layout_container, fragment, "")
+                .addToBackStack(null)
                 .commit();
         return true;
     }
