@@ -6,8 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.cula_mobile.R;
@@ -22,7 +25,9 @@ import org.w3c.dom.Text;
 public class AccountFragment extends Fragment implements IProfileView {
     ProfilePresenter profilePresenter;
     View view;
-    TextView name, email;
+    private TextView name, email;
+    private ActionBar actionBar;
+    private ProgressBar progressBar;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -36,6 +41,11 @@ public class AccountFragment extends Fragment implements IProfileView {
         view = inflater.inflate(R.layout.fragment_account, container, false);
         name = (TextView) view.findViewById(R.id.name);
         email = (TextView) view.findViewById(R.id.username);
+        progressBar = view.findViewById(R.id.progressBarProfile);
+
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setTitle("Profile");
+
         profilePresenter = new ProfilePresenter(this);
         profilePresenter.getUserProfile();
 
@@ -44,6 +54,7 @@ public class AccountFragment extends Fragment implements IProfileView {
 
     @Override
     public void showUserProfileData(User user) {
+        progressBar.setVisibility(View.GONE);
         name.setText(user.getUserName());
         email.setText(user.getEmailUser());
     }
