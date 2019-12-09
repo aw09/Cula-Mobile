@@ -33,9 +33,9 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.SubTaskV
         return new SubTaskViewHolder(view);
     }
 
-    public void onBindViewHolder(SubTaskViewHolder holder, int posititon) {
-        holder.txtSubTaskName.setText(subTasks.get(posititon).getSubTaskName());
-        holder.txtDueDate.setText(subTasks.get(posititon).getDueDate());
+    public void onBindViewHolder(SubTaskViewHolder holder, int position) {
+        holder.txtSubTaskName.setText(subTasks.get(position).getSubTaskName());
+        holder.txtDueDate.setText(subTasks.get(position).getDueDate());
     }
 
     public int getItemCount() {

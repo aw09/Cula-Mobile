@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
-import com.example.cula_mobile.model.Task;
+import com.example.cula_mobile.model.response.ResponseDetailTask;
 import com.example.cula_mobile.utils.SharedPreferenceUtils;
 
 import retrofit2.Call;
@@ -19,18 +19,27 @@ public class DetailTaskPresenter {
     }
 
     public void getDetailTask(int idTask) {
+        Log.e("koi", idTask + "");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<Task> callTask = endpoint.detailTask(SharedPreferenceUtils
+        Call<ResponseDetailTask> detailTaskCall = endpoint.detailTask(SharedPreferenceUtils
                 .getStringSharedPreferences("token", "detailTask"), idTask);
-        callTask.enqueue(new Callback<Task>() {
+        detailTaskCall.enqueue(new Callback<ResponseDetailTask>() {
             @Override
-            public void onResponse(Call<Task> call, Response<Task> response) {
-
+            public void onResponse(Call<ResponseDetailTask> call, Response<ResponseDetailTask> response) {
+                if (response.isSuccessful()) {
+                    Log.e("koi", response.code() + "");
+                    view.showDetailTask(response.body());
+                    view.showSubtask(response.body().getSubtasks());
+                    view.showComment(response.body().getComments());
+                    view.showTaskTitle(response.body().getTaskName());
+                } else {
+                    Log.e("koi", "not success");
+                }
             }
 
             @Override
-            public void onFailure(Call<Task> call, Throwable t) {
-                Log.e("koi", t.getMessage());
+            public void onFailure(Call<ResponseDetailTask> call, Throwable t) {
+                Log.e("koi", t.toString());
             }
         });
     }
