@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
 import com.example.cula_mobile.model.Board;
+import com.example.cula_mobile.model.response.ResponseBoard;
 import com.example.cula_mobile.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
@@ -25,22 +26,21 @@ public class BoardPresenter {
         Log.e("lele", idProject+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
         token = SharedPreferenceUtils.getStringSharedPreferences("token", "board");
-        Call<ArrayList<Board>> callBoard = endpoint.showProject(token, idProject);
-        callBoard.enqueue(new Callback<ArrayList<Board>>() {
+        Call<ResponseBoard> boardCall = endpoint.showProject(token, idProject);
+        boardCall.enqueue(new Callback<ResponseBoard>() {
             @Override
-            public void onResponse(Call<ArrayList<Board>> call, Response<ArrayList<Board>> response) {
+            public void onResponse(Call<ResponseBoard> call, Response<ResponseBoard> response) {
                 if (response.isSuccessful()) {
                     Log.e("lele", response.code()+"");
-                    view.showBoardList(response.body());
+                    view.showBoardList(response.body().getBoards());
                 } else {
                     Log.e("lele", "not success");
                 }
-
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Board>> call, Throwable t) {
-                Log.e("fail", t.getMessage());
+            public void onFailure(Call<ResponseBoard> call, Throwable t) {
+                Log.e("boardfail", t.getMessage());
             }
         });
     }

@@ -34,8 +34,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     }
 
     public void onBindViewHolder(BoardViewHolder holder, int posititon) {
-        Log.e("mujaeer", posititon+"");
-        Log.e("mujaeer", myBoards.get(posititon).getBoardName()+"");
         holder.txtBoardName.setText(myBoards.get(posititon).getBoardName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
