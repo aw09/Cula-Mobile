@@ -34,12 +34,11 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
     public void onBindViewHolder(ProjectViewHolder holder, int position) {
         holder.txtProjectName.setText(projects.get(position).getProjectName());
+        holder.txtProjectDueDate.setText("Due date " + projects.get(position).getDueDate());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragmentTransaction(new BoardFragment(projects.get(position).getIdProject()));
-//                intent.putExtra("idProject", projects.get(position).getIdProject());
-//                context.startActivity(intent);
             }
         });
 
@@ -50,12 +49,13 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
     }
 
     public class ProjectViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtProjectName;
+        private TextView txtProjectName, txtProjectDueDate;
 
         public ProjectViewHolder(View itemView) {
             super(itemView);
 
             txtProjectName = (TextView) itemView.findViewById(R.id.textView);
+            txtProjectDueDate = (TextView) itemView.findViewById(R.id.textProjectDueDate);
         }
     }
 

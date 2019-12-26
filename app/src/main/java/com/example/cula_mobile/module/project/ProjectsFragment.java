@@ -31,7 +31,6 @@ public class ProjectsFragment extends Fragment implements IProjectView {
     private RecyclerView recyclerView;
     private ProjectAdapter projectAdapter;
     ProgressBar progressBar;
-    private ArrayList<Project> projects;
     private View view;
     private ActionBar actionBar;
 
