@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_due_date"
+            app:layout_constraintBottom_toTopOf="@id/layout_due_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -39,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:text="Description of Task"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
                 android:fontFamily="sans-serif"
@@ -55,10 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_label"
+            app:layout_constraintBottom_toTopOf="@id/layout_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_description">
+            app:layout_constraintTop_toBottomOf="@id/layout_description">
 
             <ImageView
                 android:id="@+id/imageDueDate"
@@ -67,7 +66,7 @@
                 android:layout_marginStart="32dp"
                 android:src="@drawable/ic_date_range_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtDueDate"
+                app:layout_constraintEnd_toStartOf="@id/txtDueDate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,12 +76,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:text="October 28th, 2019 at 9.00 PM"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
                 android:fontFamily="sans-serif"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageDueDate"
+                app:layout_constraintStart_toEndOf="@id/imageDueDate"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -103,24 +101,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtLabel"
+                app:layout_constraintEnd_toStartOf="@id/txtLabel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_label_outline_black_24dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <include
                 android:id="@+id/txtLabel"
-                android:layout_width="300dp"
+                layout="@layout/item_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="horizontal"
+                android:layout_marginEnd="264dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageLabel"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_label" />
+                app:layout_constraintStart_toEndOf="@id/imageLabel"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
