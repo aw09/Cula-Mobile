@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
+import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
 import com.example.cula_mobile.model.response.ResponseBoard;
 import com.example.cula_mobile.utils.SharedPreferenceUtils;
@@ -24,29 +25,27 @@ public class CardPresenter {
     public void getCardList(int idBoard) {
         Log.e("bandeng", idBoard+"");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<ResponseBoard> callCard = endpoint.showBoard(SharedPreferenceUtils
-                        .getStringSharedPreferences("token", "card"), idBoard);
-
-        callCard.enqueue(new Callback<ResponseBoard>() {
+        String token = SharedPreferenceUtils.getStringSharedPreferences("token", "card");
+        Call<Board> boardCall = endpoint.showBoard(token, idBoard);
+        boardCall.enqueue(new Callback<Board>() {
             @Override
-            public void onResponse(Call<ResponseBoard> call, Response<ResponseBoard> response) {
+            public void onResponse(Call<Board> call, Response<Board> response) {
                 Log.e("edyrib", response.body()+"");
                 if (response.isSuccessful()) {
-                    if (response.body().getListCard().size() == 0) {
+                    if (response.body().getCards().size() == 0) {
                         view.showInformation();
                     } else {
-                        view.showCardList(response.body().getListCard());
+                        view.showCardList(response.body().getCards());
                         view.showTitle(response.body().getBoardName());
                     }
-
                 } else {
-                    Log.e("bandeng", response.code()+"");
+                    Log.e("edyribawah", response.code()+"");
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBoard> call, Throwable t) {
-                Log.e("bandengbau", t.toString());
+            public void onFailure(Call<Board> call, Throwable t) {
+                Log.e("edyribgagal", t.toString());
             }
         });
     }
