@@ -2,6 +2,7 @@ package com.example.cula_mobile.data.api;
 
 import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
+import com.example.cula_mobile.model.Comment;
 import com.example.cula_mobile.model.Project;
 import com.example.cula_mobile.model.Subtask;
 import com.example.cula_mobile.model.Task;
@@ -41,13 +42,13 @@ public interface IApiEndpoint {
     );
 
     @GET("project/{id}")
-    Call<ArrayList<Board>> showProject(
+    Call<ResponseBoard> showProject(
             @Header("Authorization") String header,
             @Path("id") int id
     );
 
     @GET("board/{id}")
-    Call<ResponseBoard> showBoard(
+    Call<Board> showBoard(
             @Header("Authorization") String header,
             @Path("id") int id
     );
@@ -80,5 +81,14 @@ public interface IApiEndpoint {
             @Field("id_task") int idTask,
             @Field("check_list") String subtaskName,
             @Field("due_date") String dueDate
+    );
+
+    @FormUrlEncoded
+    @POST("comment")
+    Call<Comment> addComment(
+            @Header("Authorization") String header,
+            @Field("comment") String comment,
+            @Field("id_task") int idTask,
+            @Field("id_user") int idUser
     );
 }
