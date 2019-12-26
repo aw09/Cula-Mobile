@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.example.cula_mobile.data.api.ApiRetrofit;
 import com.example.cula_mobile.data.api.IApiEndpoint;
+import com.example.cula_mobile.model.User;
 import com.example.cula_mobile.model.response.ResponseLogin;
 import com.example.cula_mobile.utils.SharedPreferenceUtils;
 
@@ -14,14 +15,14 @@ import retrofit2.Response;
 public class LoginPresenter {;
     private ILoginView view;
     private String token;
+    IApiEndpoint apiEndpoint;
 
     public LoginPresenter(ILoginView view) {
         this.view = view;
+        this.apiEndpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
     }
 
     public void doLogin(String email, String password) {
-
-        IApiEndpoint apiEndpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
 
         apiEndpoint.login(email, password).enqueue(new Callback<ResponseLogin>() {
             @Override
@@ -41,6 +42,27 @@ public class LoginPresenter {;
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
                 Log.e("not response", t.toString());
                 view.showInformation();
+            }
+        });
+    }
+
+    public void getUser() {
+        Call<User> userCall = apiEndpoint.getUser(SharedPreferenceUtils
+                .getStringSharedPreferences("token", "user"));
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+                    SharedPreferenceUtils.setIntSharedPreferences("idUser",
+                            response.body().getUser().getIdUser());
+                } else {
+                    Log.e("lala", "unsuccess");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
             }
         });
     }

@@ -55,6 +55,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     @Override
     public void showInformation() {
         progressBar.setVisibility(View.GONE);
-        Toast.makeText(this, "Server is down", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Try again", Toast.LENGTH_SHORT).show();
     }
 }
