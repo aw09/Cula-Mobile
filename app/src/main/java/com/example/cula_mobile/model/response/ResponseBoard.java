@@ -1,5 +1,6 @@
 package com.example.cula_mobile.model.response;
 
+import com.example.cula_mobile.model.Board;
 import com.example.cula_mobile.model.Card;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,21 +8,16 @@ import java.util.ArrayList;
 
 public class ResponseBoard {
     @SerializedName("id")
-    private int idBoard;
-    @SerializedName("id_project")
     private int idProject;
+
     @SerializedName("name")
-    private String boardName;
-    @SerializedName("card")
-    private ArrayList<Card> listCard;
+    private String projectName;
 
-    public int getIdBoard() {
-        return idBoard;
-    }
+    @SerializedName("due_date")
+    private String dueDate;
 
-    public void setIdBoard(int idBoard) {
-        this.idBoard = idBoard;
-    }
+    @SerializedName("board")
+    private ArrayList<Board> boards;
 
     public int getIdProject() {
         return idProject;
@@ -31,19 +27,27 @@ public class ResponseBoard {
         this.idProject = idProject;
     }
 
-    public String getBoardName() {
-        return boardName;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setBoardName(String boardName) {
-        this.boardName = boardName;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public ArrayList<Card> getListCard() {
-        return listCard;
+    public String getDueDate() {
+        return dueDate;
     }
 
-    public void setListCard(ArrayList<Card> listCard) {
-        this.listCard = listCard;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public ArrayList<Board> getBoards() {
+        return boards;
+    }
+
+    public void setBoards(ArrayList<Board> boards) {
+        this.boards = boards;
     }
 }

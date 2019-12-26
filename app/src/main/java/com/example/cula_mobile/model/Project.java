@@ -7,6 +7,8 @@ public class Project {
     private int idProject;
     @SerializedName("name")
     private String projectName;
+    @SerializedName("due_date")
+    private String dueDate;
 
     public int getIdProject() {
         return idProject;
@@ -22,5 +24,13 @@ public class Project {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 }

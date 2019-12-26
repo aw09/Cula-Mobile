@@ -7,14 +7,21 @@ import java.util.ArrayList;
 public class Board {
     @SerializedName("id")
     private int idBoard;
+
     @SerializedName("id_project")
     private int idProject;
+
     @SerializedName("name")
     private String boardName;
+
     @SerializedName("created_at")
     private String createdDate;
+
     @SerializedName("updated_at")
     private String updatedDate;
+
+    @SerializedName("card")
+    private ArrayList<Card> cards;
 
     public int getIdBoard() {
         return idBoard;
@@ -54,5 +61,13 @@ public class Board {
 
     public void setUpdatedDate(String updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
     }
 }

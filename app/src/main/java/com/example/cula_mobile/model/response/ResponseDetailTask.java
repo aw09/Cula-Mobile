@@ -6,6 +6,7 @@ import com.example.cula_mobile.model.Subtask;
 import com.example.cula_mobile.model.User;
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class ResponseDetailTask {
