@@ -34,7 +34,9 @@ public class DetailTaskPresenter {
                 if (response.isSuccessful()) {
                     Log.e("koi", response.code() + "");
                     view.showDetailTask(response.body());
-                    view.showLabel(response.body().getLabel());
+                    if (response.body().getLabel() != null) {
+                        view.showLabel(response.body().getLabel());
+                    }
                     view.showSubtask(response.body().getSubtasks());
                     view.showComment(response.body().getComments());
                     view.showTaskTitle(response.body().getTaskName());

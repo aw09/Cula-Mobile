@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +42,7 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
     private ImageButton btnAddSubtask;
     private Button addComment;
     private Fragment fragment;
-    private LinearLayout layout_label;
+    private CardView cardView;
 
     public DetailTaskFragment(int idTask) {
         // Required empty public constructor
@@ -59,7 +60,8 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
         detailTaskPresenter.getDetailTask();
 
         setStatus();
-        layout_label = (LinearLayout) view.findViewById(R.id.cardLabel);
+        cardView = (CardView) view.findViewById(R.id.cardLabel);
+        cardView.setVisibility(View.INVISIBLE);
 
         btnAddSubtask = (ImageButton) view.findViewById(R.id.btnAddSubtask);
         btnAddSubtask.setOnClickListener(new View.OnClickListener() {
@@ -118,15 +120,20 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
 
     @Override
     public void showLabel(Label label) {
-        TextView labelName = (TextView) view.findViewById(R.id.labelName);
-        labelName.setText(label.getLabelName());
+        if (label != null) {
+            cardView.setVisibility(View.VISIBLE);
+            TextView labelName = (TextView) view.findViewById(R.id.labelName);
+            labelName.setText(label.getLabelName());
 
-        if (label.getColorLabel().toLowerCase().equals("red")) {
-            layout_label.setBackgroundColor(Color.parseColor("#FF748F"));
-            labelName.setTextColor(Color.WHITE);
-        } else if (label.getColorLabel().toLowerCase().equals("blue")) {
-            layout_label.setBackgroundColor(Color.parseColor("#0F9CDB"));
-            labelName.setTextColor(Color.WHITE);
+            if (label.getColorLabel().toLowerCase().equals("red")) {
+                cardView.setCardBackgroundColor(Color.parseColor("#FF748F"));
+                labelName.setTextColor(Color.WHITE);
+            } else if (label.getColorLabel().toLowerCase().equals("blue")) {
+                cardView.setCardBackgroundColor(Color.parseColor("#0F9CDB"));
+                labelName.setTextColor(Color.WHITE);
+            }
+        } else {
+            cardView.setVisibility(View.INVISIBLE);
         }
     }
 
