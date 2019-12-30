@@ -100,23 +100,20 @@
             android:textColor="#4B4B4B"
             android:textSize="30px"
             android:fontFamily="sans-serif"
-            app:layout_constraintBottom_toTopOf="@+id/addDate"
+            app:layout_constraintBottom_toTopOf="@+id/txtChooseDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addDescription" />
 
-        <EditText
-            android:id="@+id/addDate"
+
+        <TextView
+            android:id="@+id/txtChooseDate"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="44dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
             android:hint="YYYY-MM-DD"
-            android:inputType="datetime"
-            android:fontFamily="sans-serif"
-            app:layout_constraintBottom_toTopOf="@+id/buttonOK"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDate" />
@@ -138,7 +135,7 @@
             app:layout_constraintBottom_toTopOf="@id/progressBarCreateTask"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addDate" />
+            app:layout_constraintTop_toBottomOf="@id/txtChooseDate" />
 
         <ProgressBar
             android:id="@+id/progressBarCreateTask"

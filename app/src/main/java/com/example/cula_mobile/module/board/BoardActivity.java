@@ -1,7 +1,10 @@
 package com.example.cula_mobile.module.board;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +25,7 @@ public class BoardActivity extends AppCompatActivity implements IBoardView {
     private RecyclerView recyclerView;
     private BoardAdapter boardAdapter;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,18 @@ public class BoardActivity extends AppCompatActivity implements IBoardView {
         int idProject = getIntent().getIntExtra("idProject", 0);
         boardPresenter = new BoardPresenter(this);
         boardPresenter.getBoardList(idProject);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        }
+
+
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
