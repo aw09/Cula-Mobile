@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_description"
@@ -15,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_due_date"
+            app:layout_constraintBottom_toTopOf="@id/layout_due_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -37,9 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:text="Description of Task"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageDescription"
@@ -52,10 +54,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_label"
+            app:layout_constraintBottom_toTopOf="@id/layout_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_description">
+            app:layout_constraintTop_toBottomOf="@id/layout_description">
 
             <ImageView
                 android:id="@+id/imageDueDate"
@@ -64,7 +66,7 @@
                 android:layout_marginStart="32dp"
                 android:src="@drawable/ic_date_range_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtDueDate"
+                app:layout_constraintEnd_toStartOf="@id/txtDueDate"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,11 +76,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="32dp"
-                android:text="October 28th, 2019 at 9.00 PM"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageDueDate"
+                app:layout_constraintStart_toEndOf="@id/imageDueDate"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -99,24 +101,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtLabel"
+                app:layout_constraintEnd_toStartOf="@id/txtLabel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_label_outline_black_24dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <include
                 android:id="@+id/txtLabel"
-                android:layout_width="300dp"
+                layout="@layout/item_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="horizontal"
+                android:layout_marginEnd="264dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageLabel"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_label" />
+                app:layout_constraintStart_toEndOf="@id/imageLabel"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -152,6 +152,7 @@
                 android:text="Status"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/spinnerStatus"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageStatus"
@@ -159,7 +160,7 @@
 
             <Spinner
                 android:id="@+id/spinnerStatus"
-                android:layout_width="100dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -204,7 +205,7 @@
                 android:textSize="17dp"
                 app:layout_constraintBottom_toTopOf="@id/listSubmissionLink"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageLink"
+                app:layout_constraintStart_toEndOf="@id/imageLink"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -217,8 +218,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtSubmissionLink"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_task" />
+                tools:listitem="@layout/item_link" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -254,6 +254,7 @@
                 android:text="Members"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/listMember"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageMember"
@@ -306,13 +307,14 @@
                 android:text="Sub-task"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/listSubtask"
-                app:layout_constraintEnd_toStartOf="@id/btnAddTask"
-                app:layout_constraintStart_toEndOf="@+id/imageSubtask"
+                app:layout_constraintEnd_toStartOf="@id/btnAddSubtask"
+                app:layout_constraintStart_toEndOf="@id/imageSubtask"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/btnAddTask"
+                android:id="@+id/btnAddSubtask"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="32dp"
@@ -330,11 +332,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="32dp"
-                android:background="#F1F1F1"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddTask"
+                app:layout_constraintTop_toBottomOf="@id/btnAddSubtask"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_sub_task" />
 
@@ -372,6 +374,7 @@
                 android:text="Comments"
                 android:textColor="#4B4B4B"
                 android:textSize="17dp"
+                android:fontFamily="sans-serif"
                 app:layout_constraintBottom_toTopOf="@id/addComment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageComment"
@@ -384,8 +387,9 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_task"
                 android:hint="Comment here"
+                android:fontFamily="sans-serif"
+                android:selectAllOnFocus="true"
                 app:layout_constraintBottom_toTopOf="@+id/btnAddComment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -414,7 +418,7 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="24dp"
-                android:background="#F1F1F1"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -424,7 +428,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </ScrollView>

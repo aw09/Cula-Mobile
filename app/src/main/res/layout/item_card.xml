@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="#FFFFFF"
-        android:layout_marginRight="16dp">
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,77 +25,75 @@
             android:layout_height="wrap_content"
             android:background="#F1F1F1" >
 
+
             <TextView
-                android:id="@+id/txtBoardName"
+                android:id="@+id/txtCardName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="BOARD NAME"
+                android:layout_marginTop="64dp"
+                android:fontFamily="sans-serif"
+                android:text="CARD NAME"
                 android:textColor="#4B4B4B"
-                android:textSize="50px"
+                android:textSize="40px"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <Button
+                android:id="@+id/btnSaveTask"
+                android:layout_width="270dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/btn_rounded"
+                android:fontFamily="sans-serif"
+
+                android:gravity="center"
+                android:text="Add task"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@id/listTask"
+                app:layout_constraintEnd_toEndOf="@id/view"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/view" />
 
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="8dp"
                 android:background="#4B4B4B"
-                app:layout_constraintBottom_toTopOf="@+id/listTask"
+                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtBoardName" />
+                app:layout_constraintTop_toBottomOf="@id/txtCardName" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listTask"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                tools:listitem="@layout/item_task"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.986"
+                app:layout_constraintStart_toEndOf="@id/btnSaveTask"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnSaveTask"
                 tools:itemCount="5"
-                app:layout_constraintBottom_toTopOf="@id/addTask"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                tools:listitem="@layout/item_task" />
 
-            <EditText
-                android:id="@+id/addTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_task"
-                android:hint="Add new task"
-                app:layout_constraintBottom_toTopOf="@+id/btnSaveTask"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/listTask" />
 
-            <Button
-                android:id="@+id/btnSaveTask"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/btn_rounded"
-                android:text="Save"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/addTask" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

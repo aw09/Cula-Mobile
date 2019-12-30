@@ -5,14 +5,19 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.cula_mobile.module.mytask.MyCardFragment;
+import com.example.cula_mobile.module.profile.AccountFragment;
+import com.example.cula_mobile.module.project.ProjectsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ActivityBottom_navigation extends AppCompatActivity {
     private TextView mTextMessage;
+    private ActionBar actionBar;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -34,12 +39,20 @@ public class ActivityBottom_navigation extends AppCompatActivity {
     };
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        fragmentTransaction(new ProjectsFragment());
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mTextMessage = findViewById(R.id.message);
+
+
     }
 
     private boolean fragmentTransaction(Fragment fragment){
@@ -48,7 +61,6 @@ public class ActivityBottom_navigation extends AppCompatActivity {
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.frame_layout_container, fragment, "")
-                .addToBackStack(backStackStateName)
                 .commit();
         return true;
     }

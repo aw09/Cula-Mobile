@@ -1,113 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="250px"
-            android:layout_height="250px"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="CULA"
-            android:textColor="#0F9CDB"
-            android:textSize="100px"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/imageEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo" />
-
-
-        <ImageView
-            android:id="@+id/imageEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:src="@drawable/ic_email_black_24dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageLock"
-            app:layout_constraintEnd_toStartOf="@+id/email"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toTopOf="@+id/password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageEmail"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
-
-        <ImageView
-            android:id="@+id/imageLock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/ic_lock_black_24dp"
-            app:layout_constraintEnd_toStartOf="@+id/password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageEmail" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            app:layout_constraintBottom_toTopOf="@+id/login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/imageLock"
-            app:layout_constraintTop_toBottomOf="@id/password" />
-
-        <Button
-            android:id="@+id/login"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/btn_rounded"
-            android:text="LOG IN"
-            android:textColor="#ffffff"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_marginTop="80dp"
+            app:layout_constraintBottom_toTopOf="@id/progressBarLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/logoo"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="sans-serif"
+                android:text="CULA"
+                android:textColor="#0F9CDB"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/imageEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/logo" />
+
+
+            <ImageView
+                android:id="@+id/imageEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:src="@drawable/ic_email_black_24dp"
+                app:layout_constraintBottom_toTopOf="@+id/imageLock"
+                app:layout_constraintEnd_toStartOf="@+id/email"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toTopOf="@+id/password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageEmail"
+                app:layout_constraintTop_toBottomOf="@id/textView" />
+
+            <ImageView
+                android:id="@+id/imageLock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_lock_black_24dp"
+                app:layout_constraintEnd_toStartOf="@+id/password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageEmail" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:selectAllOnFocus="true"
+                app:layout_constraintBottom_toTopOf="@+id/login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageLock"
+                app:layout_constraintTop_toBottomOf="@id/password" />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/btn_rounded"
+                android:fontFamily="sans-serif"
+                android:text="LOG IN"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/password" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarLogin"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password" />
+            app:layout_constraintTop_toBottomOf="@id/layout_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
