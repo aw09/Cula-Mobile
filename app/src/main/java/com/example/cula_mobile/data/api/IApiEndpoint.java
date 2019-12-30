@@ -11,16 +11,19 @@ import com.example.cula_mobile.model.response.ResponseBoard;
 import com.example.cula_mobile.model.response.ResponseCreateTask;
 import com.example.cula_mobile.model.response.ResponseDetailTask;
 import com.example.cula_mobile.model.response.ResponseLogin;
+import com.example.cula_mobile.model.response.ResponseLogout;
 import com.example.cula_mobile.model.response.ResponseMyTask;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface IApiEndpoint {
@@ -90,5 +93,18 @@ public interface IApiEndpoint {
             @Field("comment") String comment,
             @Field("id_task") int idTask,
             @Field("id_user") int idUser
+    );
+
+    @FormUrlEncoded
+    @PUT("checklist/{id}")
+    Call<Subtask> updateSubtask(
+            @Header("Authorization") String header,
+            @Path("id") int idChecklist,
+            @Body Subtask subtask
+    );
+
+    @GET("logout")
+    Call<ResponseLogout> logout(
+            @Header("Authorization") String header
     );
 }
