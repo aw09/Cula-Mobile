@@ -24,6 +24,10 @@ public class SharedPreferenceUtils {
         editor.apply();
     }
 
+    public static void setBooleanSharedPref(String key, boolean value) {
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
 
     public static String getStringSharedPreferences(String key, String defaultValue) {
         return sharedPreferences.getString(key, defaultValue);
@@ -31,6 +35,10 @@ public class SharedPreferenceUtils {
 
     public static int getIntSharedPreferences(String key, int defaultValue) {
         return sharedPreferences.getInt(key, defaultValue);
+    }
+
+    public static boolean getBooleanSharedPref(String key, boolean defValue) {
+        return sharedPreferences.getBoolean(key, defValue);
     }
 
     public static void removeSavedPref(String key) {
