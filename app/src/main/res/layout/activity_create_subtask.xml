@@ -52,7 +52,7 @@
             android:id="@+id/addSubTask"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="48dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
             android:fontFamily="sans-serif"
@@ -74,26 +74,23 @@
             android:text="Due date"
             android:textColor="#4B4B4B"
             android:textSize="30px"
-            app:layout_constraintBottom_toTopOf="@id/addDateOfSubtask"
+            app:layout_constraintBottom_toTopOf="@id/txtChooseDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addSubTask" />
 
-        <EditText
-            android:id="@+id/addDateOfSubtask"
+        <TextView
+            android:id="@+id/txtChooseDate"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="56dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif"
             android:hint="YYYY-MM-DD"
-            android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@id/buttonSave"
+            app:layout_constraintRight_toLeftOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtDate" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDate" />
 
         <Button
             android:id="@+id/buttonSave"
@@ -111,7 +108,7 @@
             app:layout_constraintBottom_toTopOf="@id/progressBarCreateSubTask"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addDateOfSubtask" />
+            app:layout_constraintTop_toBottomOf="@id/txtChooseDate" />
 
         <ProgressBar
             android:id="@+id/progressBarCreateSubTask"
