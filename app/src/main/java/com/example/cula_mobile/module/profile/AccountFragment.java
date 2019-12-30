@@ -1,13 +1,16 @@
 package com.example.cula_mobile.module.profile;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.model.User;
+import com.example.cula_mobile.module.login.LoginActivity;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +30,7 @@ public class AccountFragment extends Fragment implements IProfileView {
     ProfilePresenter profilePresenter;
     View view;
     private TextView name, email;
+    Button logout;
     private ActionBar actionBar;
     private ProgressBar progressBar;
 
@@ -41,6 +46,7 @@ public class AccountFragment extends Fragment implements IProfileView {
         view = inflater.inflate(R.layout.fragment_account, container, false);
         name = (TextView) view.findViewById(R.id.name);
         email = (TextView) view.findViewById(R.id.username);
+        logout = (Button) view.findViewById(R.id.imageButtonLogout);
         progressBar = view.findViewById(R.id.progressBarProfile);
 
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
@@ -48,6 +54,13 @@ public class AccountFragment extends Fragment implements IProfileView {
 
         profilePresenter = new ProfilePresenter(this);
         profilePresenter.getUserProfile();
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profilePresenter.doLogout();
+            }
+        });
 
         return view;
     }
@@ -57,5 +70,12 @@ public class AccountFragment extends Fragment implements IProfileView {
         progressBar.setVisibility(View.GONE);
         name.setText(user.getUserName());
         email.setText(user.getEmailUser());
+    }
+
+    @Override
+    public void showMessageLogout(String msg) {
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
     }
 }

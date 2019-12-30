@@ -12,6 +12,10 @@ public class Subtask {
     private String subTaskName;
     @SerializedName("due_date")
     private String dueDate;
+    @SerializedName("checked")
+    private int checked;
+    @SerializedName("success")
+    private boolean success;
 
     public int getIdSubTask() {
         return idSubTask;
@@ -43,5 +47,21 @@ public class Subtask {
 
     public void setIdTask(int idTask) {
         this.idTask = idTask;
+    }
+
+    public int getChecked() {
+        return checked;
+    }
+
+    public void setChecked(int checked) {
+        this.checked = checked;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 }
