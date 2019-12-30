@@ -33,6 +33,7 @@ public class BoardPresenter {
                 if (response.isSuccessful()) {
                     Log.e("lele", response.code()+"");
                     view.showBoardList(response.body().getBoards());
+                    view.showProjectName(response.body().getProjectName());
                 } else {
                     Log.e("lele", "not success");
                 }

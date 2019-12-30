@@ -35,6 +35,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
 
     public void onBindViewHolder(BoardViewHolder holder, int posititon) {
         holder.txtBoardName.setText(myBoards.get(posititon).getBoardName());
+        holder.txtSumOfCard.setText(myBoards.get(posititon).getCards().size() + " Cards");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,14 +49,15 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
     }
 
     public class BoardViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtBoardName;
+        private TextView txtBoardName, txtSumOfCard;
         private RecyclerView listTask;
 
         public BoardViewHolder(View itemView) {
             super(itemView);
 
             txtBoardName = (TextView) itemView.findViewById(R.id.textView);
-            Log.e("mujaeerbawah", txtBoardName+"");
+            txtSumOfCard = (TextView) itemView.findViewById(R.id.sumOfCard);
+
         }
     }
 

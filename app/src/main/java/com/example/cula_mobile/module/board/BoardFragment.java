@@ -62,7 +62,6 @@ public class BoardFragment extends Fragment implements IBoardView{
         textInfo = view.findViewById(R.id.info_in_board);
 
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle("Board");
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -81,6 +80,11 @@ public class BoardFragment extends Fragment implements IBoardView{
             recyclerView.setAdapter(boardAdapter);
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         }
+    }
+
+    @Override
+    public void showProjectName(String name) {
+        actionBar.setTitle(name);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

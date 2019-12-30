@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BoardActivity extends AppCompatActivity implements IBoardView {
+public class BoardActivity extends AppCompatActivity {
     private BoardPresenter boardPresenter;
     private RecyclerView recyclerView;
     private BoardAdapter boardAdapter;
@@ -27,16 +27,7 @@ public class BoardActivity extends AppCompatActivity implements IBoardView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
         int idProject = getIntent().getIntExtra("idProject", 0);
-        boardPresenter = new BoardPresenter(this);
-        boardPresenter.getBoardList(idProject);
-    }
-
-    @Override
-    public void showBoardList(ArrayList<Board> boards) {
-        recyclerView = (RecyclerView) findViewById(R.id.listBoard);
-        boardAdapter = new BoardAdapter(boards, BoardActivity.this);
-
-        recyclerView.setAdapter(boardAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(BoardActivity.this));
+        //boardPresenter = new BoardPresenter(this);
+        //boardPresenter.getBoardList(idProject);
     }
 }

@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface IBoardView {
     void showBoardList(ArrayList<Board> boards);
+    void showProjectName(String name);
 }
