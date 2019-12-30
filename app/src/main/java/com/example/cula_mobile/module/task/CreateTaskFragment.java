@@ -2,7 +2,6 @@ package com.example.cula_mobile.module.task;
 
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +20,10 @@ import android.widget.TextView;
 import com.example.cula_mobile.R;
 import com.example.cula_mobile.module.card.CardFragment;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -32,6 +35,12 @@ public class CreateTaskFragment extends Fragment implements ICreateTaskView {
     private Button btnOK;
     private ProgressBar progressBar;
     private static final int DIALOG_ID = 0;
+
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
+    private TextView txtChooseDate;
+
+
 
     public CreateTaskFragment(int idCard, int idBoard) {
         // Required empty public constructor
@@ -47,10 +56,16 @@ public class CreateTaskFragment extends Fragment implements ICreateTaskView {
 
         txtTask = (EditText) view.findViewById(R.id.addTask);
         txtDescription = (EditText) view.findViewById(R.id.addDescription);
-        txtDueDate = (EditText) view.findViewById(R.id.addDate);
+        //txtDueDate = (EditText) view.findViewById(R.id.addDate);
         btnOK = (Button) view.findViewById(R.id.buttonOK);
         progressBar = view.findViewById(R.id.progressBarCreateTask);
         progressBar.setVisibility(View.GONE);
+
+        //btnDate = (Button) view.findViewById(R.id.buttonDate);
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        txtChooseDate = (TextView) view.findViewById(R.id.txtChooseDate);
+
+
 
         createTaskPresenter = new CreateTaskPresenter(this);
 
@@ -60,12 +75,44 @@ public class CreateTaskFragment extends Fragment implements ICreateTaskView {
                 progressBar.setVisibility(View.VISIBLE);
                 createTaskPresenter.createTask(idCard, txtTask.getText().toString(),
                         txtDescription.getText().toString(),
-                        txtDueDate.getText().toString());
+                        //txtDueDate.getText().toString());
+                        txtChooseDate.getText().toString());
+
+            }
+        });
+
+//        btnDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showDateDialog();
+//            }
+//        });
+        txtChooseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog();
             }
         });
 
         return view;
     }
+
+
+    private void showDateDialog() {
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this.view.getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int day, int month, int year) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(day, month, year);
+
+                txtChooseDate.setText(dateFormatter.format(newDate.getTime()));
+
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
 
 //    private void showDialogOnClick() {
 //        txtDueDate.setOnClickListener(new View.OnClickListener() {
