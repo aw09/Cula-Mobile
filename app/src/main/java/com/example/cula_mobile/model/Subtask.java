@@ -15,7 +15,7 @@ public class Subtask {
     @SerializedName("checked")
     private int checked;
     @SerializedName("success")
-    private boolean success;
+    private Subtask success;
 
     public int getIdSubTask() {
         return idSubTask;
@@ -57,11 +57,11 @@ public class Subtask {
         this.checked = checked;
     }
 
-    public boolean isSuccess() {
+    public Subtask getSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(Subtask success) {
         this.success = success;
     }
 }
