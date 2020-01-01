@@ -29,8 +29,8 @@ public class ActivityBottom_navigation extends AppCompatActivity {
                     return fragmentTransaction(new ProjectsFragment());
                 case R.id.navigation_mytask:
                     return fragmentTransaction(new MyCardFragment());
-                case R.id.navigation_notifications:
-                    return fragmentTransaction(new NotificationsFragment());
+//                case R.id.navigation_notifications:
+//                    return fragmentTransaction(new NotificationsFragment());
                 case R.id.navigation_account:
                     return fragmentTransaction(new AccountFragment());
             }

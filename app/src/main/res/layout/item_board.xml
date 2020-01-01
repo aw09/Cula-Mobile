@@ -32,12 +32,11 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif"
-
                 android:text="hai"
                 android:textColor="#4B4B4B"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                android:maxLength="15"
+                android:maxLength="13"
                 app:layout_constraintBottom_toTopOf="@id/sumOfCard"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.18"
