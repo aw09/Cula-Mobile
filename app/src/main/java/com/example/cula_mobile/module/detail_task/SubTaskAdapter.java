@@ -84,11 +84,18 @@ public class SubTaskAdapter extends RecyclerView.Adapter<SubTaskAdapter.SubTaskV
         Log.e("cendol", status+"");
         String token = SharedPreferenceUtils.getStringSharedPreferences("token", "subtask");
         IApiEndpoint endpoint = ApiRetrofit.getInstance().create(IApiEndpoint.class);
-        Call<Subtask> call = endpoint.updateSubtask(token, st.getIdSubTask(), st);
+        Log.e("cendol", st.getIdSubTask()+"");
+        Call<Subtask> call = endpoint.updateSubtask(token, st.getIdSubTask(), status);
         call.enqueue(new Callback<Subtask>() {
             @Override
             public void onResponse(Call<Subtask> call, Response<Subtask> response) {
-                st.setChecked(status);
+                if (response.isSuccessful()) {
+                    Log.e("cendol", response.code()+"");
+                    st.setChecked(response.body().getChecked());
+                } else {
+                    Log.e("cendol", response.code()+"");
+                    Log.e("cendol", "unsuccess");
+                }
             }
 
             @Override

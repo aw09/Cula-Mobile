@@ -100,7 +100,7 @@ public interface IApiEndpoint {
     Call<Subtask> updateSubtask(
             @Header("Authorization") String header,
             @Path("id") int idChecklist,
-            @Body Subtask subtask
+            @Field("checked") int status
     );
 
     @GET("logout")

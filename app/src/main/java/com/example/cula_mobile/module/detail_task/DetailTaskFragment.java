@@ -45,7 +45,7 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
     private Button addComment;
     private Fragment fragment;
     private CardView cardView;
-   // private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     public DetailTaskFragment(int idTask) {
         // Required empty public constructor
@@ -82,19 +82,19 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
             }
         });
 
-//        swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh_layout);
-//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//            //    fetchTimelineAsync(0);
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        swipeRefreshLayout.setRefreshing(false);
-//                    }
-//                }, 4000);
-//            }
-//        });
+        swipeRefreshLayout = view.findViewById(R.id.swipe_to_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+            //    fetchTimelineAsync(0);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 4000);
+            }
+        });
 
 
 
