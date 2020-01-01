@@ -32,7 +32,7 @@ public class ProjectPresenter {
 
             @Override
             public void onFailure(Call<ArrayList<Project>> call, Throwable t) {
-                Log.e("lele", call.request().toString());
+                Log.e("lele", t.toString());
             }
         });
     }

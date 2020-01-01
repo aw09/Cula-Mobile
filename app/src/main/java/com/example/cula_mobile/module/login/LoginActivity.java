@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 progressBar.setVisibility(View.VISIBLE);
                 loginPresenter.doLogin(email.getText().toString(), password.getText().toString());
                 SharedPreferenceUtils.initSharedPrefrences("CULA", LoginActivity.this);
+                loginPresenter.getUser();
 
             }
         });
