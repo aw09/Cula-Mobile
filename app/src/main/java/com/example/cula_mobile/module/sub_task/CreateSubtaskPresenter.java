@@ -30,8 +30,9 @@ public class CreateSubtaskPresenter {
                 if (response.isSuccessful()) {
                     Log.e("arwana", response.code() + "");
                     subtask.setIdTask(idTask);
-                    subtask.setSubTaskName(response.body().getSubTaskName());
-                    subtask.setDueDate(response.body().getDueDate());
+                    subtask.setSubTaskName(response.body().getSuccess().getSubTaskName());
+                    subtask.setDueDate(response.body().getSuccess().getDueDate());
+                    view.backToDetailTask();
                 } else {
                     Log.e("arwana", "tidak sukses");
                 }
