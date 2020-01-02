@@ -162,9 +162,9 @@ public class DetailTaskFragment extends Fragment implements IDetailTaskView{
     }
 
     private void setStatus() {
-        String[] status = {"To Do", "On progress", "Done"};
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinnerStatus);
-        spinner.setAdapter(new StatusAdapter(getContext(), R.layout.item_status, status));
+//        String[] status = {"To Do", "On progress", "Done"};
+//        Spinner spinner = (Spinner) view.findViewById(R.id.spinnerStatus);
+//        spinner.setAdapter(new StatusAdapter(getContext(), R.layout.item_status, status));
     }
 
     private void moveToCreateSubtask() {
