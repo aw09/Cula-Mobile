@@ -9,7 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiRetrofit {
-    public static final String BASE_URL = "http://cula-backend.herokuapp.com/api/";
+    public static final String BASE_URL = "http://culaku.my.id/api/";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance() {

@@ -27,6 +27,7 @@ public class MyTaskPresenter {
         callTask.enqueue(new Callback<ArrayList<Task>>() {
             @Override
             public void onResponse(Call<ArrayList<Task>> call, Response<ArrayList<Task>> response) {
+                view.showMyCardList(response.body());
                 Log.e("faizfaiz", response+"");
             }
 
