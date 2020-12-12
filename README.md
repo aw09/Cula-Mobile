@@ -1,10 +1,18 @@
 # Cula Mobile
 
+> Create your tools using agile.
+
+* Implementing Agile Methodology : Scrum
+* Colaborate with industry Mauilidan Games
+* 4 months development
+
+### Awards
+* 3rd Rank Front-end Programming
+* 1st Appreciation Rank Backend Programming
+* 1st Appreciation Rank Business Presentation
 
 
-
-
-### Features
+### Documentation
 
 * Login
 
